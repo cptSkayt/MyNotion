@@ -4,7 +4,12 @@ import "./Popup.css";
 const Popup = function ({ children, info }) {   
     return (
         <div className={info.isOpen ? "main-popup" : "main-popup close"}>
-            
+            <div className="popup-content">
+                <div className="popup-title">Напиши Маше</div>
+                <div className="popup-text">{info.text !== undefined ? info.text : "Описание отсутствует"}</div>
+                <button className="remove-button">Удалить</button>
+                <div className="close-button">X</div>
+            </div>
         </div>
     )
 }

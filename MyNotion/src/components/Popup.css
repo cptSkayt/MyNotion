@@ -1,8 +1,102 @@
+@font-face {
+    font-family: "title";
+    src: url("/News-text.ttf"), format('ttf');
+}
+
+@font-face {
+    font-family: "description";
+    src: url("/Inter.ttf"), format('ttf');
+}
+
 .main-popup:not(.close) {
-    position: absolute;
+    position: fixed;
     top: 0;
     width: 100vw;
     height: 100vh;
 
     background-color: rgba(0, 0, 0, 0.4);
+}
+
+.close {
+    display: none;
+}
+
+.popup-content {
+    position: relative;
+    margin: 2vh 15vw;
+    width: 70vw;
+    height: 20vh;
+    max-height: 70vh;
+    overflow-y: scroll;
+    background-color: rgb(240, 240, 240);
+    border-radius: 20px;
+    padding: 1vh;
+}
+
+.popup-content::-webkit-scrollbar {
+    width: 0;
+}
+
+.popup-title {
+    margin-top: 1vh;
+    margin-left: 5%;
+    width: 80%;
+    height: auto;
+
+    font-family: "title";
+    font-size: 4vh;
+}
+
+.popup-text {
+    margin-top: 2vh;
+    margin-left: 7%;
+    width: 90%;
+    height: auto;
+    font-size: 2vh;
+    font-family: "description";
+}
+
+.remove-button {
+    position: absolute;
+    right: 10%;
+    bottom: 2vh;
+
+    width: 120px;
+    height: 30px;
+    border-radius: 10px;
+
+    background-color: rgb(255, 70, 70);
+    color: white;
+    border: none;
+    font-family: Arial;
+    font-size: 2vh;
+
+    &:hover {
+        cursor: pointer;
+        background-color: red;
+        transition: background-color 0.4s;
+    }
+
+    &:active {
+        opacity: 0.7;
+    }
+}
+
+.close-button {
+    position: absolute;
+    top: 1vh;
+    right: 3vh;
+    width: 30px;
+    height: 30px;
+    text-align: center;
+    font-size: 3vh;
+    line-height: -50%;
+    border-radius: 5px;
+    font-family: Arial, Helvetica, sans-serif;
+
+    &:hover {
+        cursor: pointer;
+        background-color: rgb(200, 200, 200);
+        transition: background-color 0.4s;
+    }
 }
