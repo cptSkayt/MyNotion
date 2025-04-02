@@ -1,16 +1,16 @@
 import React from "react";
 import "./Task.css";
 
-const Task = function ({ children, func }) {
+const Task = function ({ taskInfo, func }) {
     return (
         <div className="task-block" onClick={(event) => {
             if (event.target.className !== "task-button") {
-                func()
+                func(taskInfo);
             } else {
                 alert("Задача выполнена");
             }
         }}>
-            <div className="task-text">{children}</div>
+            <div className="task-text">{taskInfo.title}</div>
             <div className="task-button"></div>
         </div>
     )

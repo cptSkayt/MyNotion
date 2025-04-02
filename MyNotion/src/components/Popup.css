@@ -49,7 +49,7 @@
 
 .popup-text {
     margin-top: 2vh;
-    margin-left: 7%;
+    margin-left: 6%;
     width: 90%;
     height: auto;
     font-size: 2vh;
@@ -65,7 +65,7 @@
     height: 30px;
     border-radius: 10px;
 
-    background-color: rgb(255, 70, 70);
+    background-color: rgb(255, 100, 100);
     color: white;
     border: none;
     font-family: Arial;

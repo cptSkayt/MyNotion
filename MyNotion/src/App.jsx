@@ -6,8 +6,6 @@ import TextButton from './components/TextButton';
 import Task from './components/Task';
 import Popup from './components/Popup';
 
-const infoPopup = {isOpen: false}
-
 function openInfoPopup() {
   console.log("open")
   infoPopup.isOpen = true
@@ -26,9 +24,7 @@ function ChoresList({ children, openPopup }) {
     <Block className="chores-block">
       {children.map((child, index) => {
         return (
-          <Task key={index} func={openPopup}>
-            {child.title}
-          </Task>
+          <Task key={index} func={openPopup} taskInfo={child}></Task>
         )
       })}
     </Block>
@@ -39,8 +35,8 @@ function Side({ openPopup }) {
   // const [taskList, setTaskList] = useState([])
 
   let taskList = [
-    {title: "Поешь суп"},
-    {title: "Напиши Маше"},
+    {title: "Поешь суп", text: "Гороховый, стоит в холодильнике"},
+    {title: "Напиши Маше", text: undefined},
   ]
 
   return (
@@ -64,18 +60,23 @@ function Side({ openPopup }) {
 
 function App() {
   const [isPopupOpen, change] = useState(false)
+  const [info, setInfo] = useState({isOpen: isPopupOpen})
 
-  function openInfoPopup() {
+  function openInfoPopup(task) {
     console.log("open");
     change(true);
+    setInfo({isOpen: true, title: task.title, text: task.text})
+  }
+
+  function closePopup() {
+    change(false);
+    setInfo({isOpen: false})
   }
 
   return (
     <div>
       <Side openPopup={openInfoPopup} />
-      <Popup info={{isOpen: isPopupOpen}}>
-
-      </Popup>
+      <Popup info={info} closePopup={closePopup} />
     </div>
   );
 }
