@@ -1,0 +1,17 @@
+@font-face {
+    font-family: "title";
+    src: url("/News-text.ttf"), format('ttf');
+}
+
+.title {
+    width: 100%;
+    height: 40px;
+    margin: 0px;
+
+    background-color: rgb(180, 180, 180);
+    text-align: center;
+    line-height: 35px;
+    color: white;
+    font-family: "title";
+    cursor: default;
+}

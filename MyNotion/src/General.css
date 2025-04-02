@@ -1,0 +1,51 @@
+.main-side {
+    width: 23vw;
+    height: calc(100vh - 5px);
+    padding-top: 5px;
+    background-color: rgb(230, 230, 230);
+}
+
+.person-block {
+    position: relative;
+
+    height: calc(10vh - 10px);
+    width: calc(100% - 10px);
+    margin: 5px;
+    margin-top: 0px;
+    margin-bottom: 10px;
+}
+
+.side-block {
+    height: calc(90vh - 10px);
+    width: 100%;
+
+    position: relative;
+}
+
+.choresList-block {
+    position: absolute;
+
+    height: calc(80% - 10px);
+    width: calc(100% - 30px);
+    top: calc(40px + 1vh);
+    margin: 0px 10px;
+    padding: 5px;
+    border-radius: 10px;
+    background-color: white;
+}
+
+.chores-block {
+    width: 100%;
+    height: auto;
+    max-height: 90%;
+    margin-bottom: 2vh;
+
+    background-color: red;
+}
+
+.button-block {
+    width: 100%;
+    height: auto;
+    position: absolute;
+    bottom: 0;
+}
