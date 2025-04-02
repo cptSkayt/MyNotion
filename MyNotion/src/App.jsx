@@ -4,6 +4,14 @@ import React from 'react';
 import Title from './components/Title';
 import TextButton from './components/TextButton';
 import Task from './components/Task';
+import Popup from './components/Popup';
+
+const infoPopup = {isOpen: false}
+
+function openInfoPopup() {
+  console.log("open")
+  infoPopup.isOpen = true
+}
 
 function Block({children, ...props}) {
   return (
@@ -13,13 +21,13 @@ function Block({children, ...props}) {
   )
 }
 
-function ChoresList({ children }) {
+function ChoresList({ children, openPopup }) {
   return (
     <Block className="chores-block">
       {children.map((child, index) => {
         return (
-          <Task key={index}>
-            {child.text}
+          <Task key={index} func={openPopup}>
+            {child.title}
           </Task>
         )
       })}
@@ -27,10 +35,12 @@ function ChoresList({ children }) {
   )
 }
 
-function Side() {
+function Side({ openPopup }) {
+  // const [taskList, setTaskList] = useState([])
+
   let taskList = [
-    {text: "Поешь суп"},
-    {text: "Напиши Маше"},
+    {title: "Поешь суп"},
+    {title: "Напиши Маше"},
   ]
 
   return (
@@ -40,20 +50,12 @@ function Side() {
       <Block className="side-block">
         <Title>Список задач</Title>
         <Block className="choresList-block">
-          <ChoresList>
-            {taskList}
-          </ChoresList>
-          <TextButton>
-            Добавить задачу
-          </TextButton>
+          <ChoresList openPopup={openPopup}>{taskList}</ChoresList>
+          <TextButton>Добавить задачу</TextButton>
         </Block>
         <Block className="button-block">
-          <TextButton>
-            Настройки
-          </TextButton>
-          <TextButton>
-            О приложении
-          </TextButton>
+          <TextButton>Настройки</TextButton>
+          <TextButton>О приложении</TextButton>
         </Block>
       </Block> 
     </Block>
@@ -61,12 +63,19 @@ function Side() {
 }
 
 function App() {
+  const [isPopupOpen, change] = useState(false)
+
+  function openInfoPopup() {
+    console.log("open");
+    change(true);
+  }
 
   return (
     <div>
-      <Side>
+      <Side openPopup={openInfoPopup} />
+      <Popup info={{isOpen: isPopupOpen}}>
 
-      </Side>
+      </Popup>
     </div>
   );
 }
