@@ -1,9 +1,9 @@
 import { useState } from 'react'
-// import './App.css'
 import './General.css'
 import React from 'react';
 import Title from './components/Title';
 import TextButton from './components/TextButton';
+import Task from './components/Task';
 
 function Block({children, ...props}) {
   return (
@@ -15,13 +15,24 @@ function Block({children, ...props}) {
 
 function ChoresList({ children }) {
   return (
-    <Block>
-      {/* Обработчик списка задач */}
+    <Block className="chores-block">
+      {children.map((child, index) => {
+        return (
+          <Task key={index}>
+            {child.text}
+          </Task>
+        )
+      })}
     </Block>
   )
 }
 
 function Side() {
+  let taskList = [
+    {text: "Поешь суп"},
+    {text: "Напиши Маше"},
+  ]
+
   return (
     <Block className="main-side">
       <Block className="person-block">
@@ -29,9 +40,9 @@ function Side() {
       <Block className="side-block">
         <Title>Список задач</Title>
         <Block className="choresList-block">
-          <Block className="chores-block">
-            
-          </Block>
+          <ChoresList>
+            {taskList}
+          </ChoresList>
           <TextButton>
             Добавить задачу
           </TextButton>
