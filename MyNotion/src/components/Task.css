@@ -3,7 +3,7 @@
     src: url("/Unbounded.ttf"), format('ttf');
 }
 
-.task-block {
+.task-block:not(.done) {
     position: relative;
 
     height: 7vh;
@@ -18,43 +18,103 @@
         background-color: rgb(240, 240, 240);
         cursor: pointer;
     }
+
+    .task-text {
+        position: absolute;
+        top: 50%;
+        transform: translate(0, -50%);
+        left: 1vw;
+        width: 70%;
+        overflow: hidden;
+        white-space: nowrap;
+    
+        font-family: "task";
+        font-weight: 300;
+    }
+
+    .task-button {
+        position: absolute;
+        top: 50%;
+        transform: translate(0, -50%);
+        right: 2vh;
+        width: 3vh;
+        height: 3vh;
+        border-radius: 50%;
+        border: 2px solid rgb(180, 180, 180);
+        background-color: rgb(250, 250, 250);
+    
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.5vh;
+        cursor: pointer;
+    
+        &:hover {
+            background-color: rgb(240, 240, 240);
+        }
+    }
+
+    .cross-line {
+        display: none;
+    }
+}
+
+.task-block.done {
+    position: relative;
+
+    height: 7vh;
+    width: 94%;
+    margin-left: 3%;
+    cursor: default;
+
+    border-radius: 10px;
+    border: 2px solid rgb(230, 230, 230);
+    background-color: rgb(250, 250, 250);
+
+    .cross-line {
+        position: absolute;
+        top: 50%;
+        transform: translate(0, -50%);
+        left: 5px;
+        width: calc(80% - 10px);
+        height: 3px;
+        background-color: rgb(200, 200, 200);
+    }
+
+    .task-text {
+        position: absolute;
+        top: 50%;
+        transform: translate(0, -50%);
+        left: 1vw;
+        width: 70%;
+        overflow: hidden;
+        white-space: nowrap;
+    
+        font-family: "task";
+        font-weight: 300;
+        color: grey;
+
+    }
+
+    .task-button {
+        position: absolute;
+        top: 50%;
+        transform: translate(0, -50%);
+        right: 2vh;
+        width: 3vh;
+        height: 3vh;
+        border-radius: 50%;
+        border: none;
+        background-color: rgb(60, 200, 60);
+        
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 2vh;
+        color: white;
+    }
 }
 
 .task-block + .task-block {
     margin-top: 10px;
-}
-
-.task-text {
-    position: absolute;
-    top: 50%;
-    transform: translate(0, -50%);
-    left: 1vw;
-    width: 70%;
-    overflow: hidden;
-    white-space: nowrap;
-
-    font-family: "task";
-    font-weight: 300;
-}
-
-.task-button {
-    position: absolute;
-    top: 50%;
-    transform: translate(0, -50%);
-    right: 2vh;
-    width: 3vh;
-    height: 3vh;
-    border-radius: 50%;
-    border: 2px solid rgb(180, 180, 180);
-    background-color: transparent;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 1.5vh;
-    cursor: pointer;
-
-    &:hover {
-        background-color: rgb(230, 230, 230);
-    }
 }
