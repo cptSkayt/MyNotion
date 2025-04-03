@@ -6,11 +6,6 @@ import TextButton from './components/TextButton';
 import Task from './components/Task';
 import Popup from './components/Popup';
 
-function openInfoPopup() {
-  console.log("open")
-  infoPopup.isOpen = true
-}
-
 function Block({children, ...props}) {
   return (
     <div {...props}>
@@ -24,21 +19,14 @@ function ChoresList({ children, openPopup }) {
     <Block className="chores-block">
       {children.map((child, index) => {
         return (
-          <Task key={index} func={openPopup} taskInfo={child}></Task>
+          <Task key={index} func={openPopup} taskInfo={child} />
         )
       })}
     </Block>
   )
 }
 
-function Side({ openPopup }) {
-  // const [taskList, setTaskList] = useState([])
-
-  let taskList = [
-    {title: "Поешь суп", text: "Гороховый, стоит в холодильнике"},
-    {title: "Напиши Маше", text: undefined},
-  ]
-
+function Side({ openPopup, taskList }) {
   return (
     <Block className="main-side">
       <Block className="person-block">
@@ -63,7 +51,6 @@ function App() {
   const [info, setInfo] = useState({isOpen: isPopupOpen})
 
   function openInfoPopup(task) {
-    console.log("open");
     change(true);
     setInfo({isOpen: true, title: task.title, text: task.text})
   }
@@ -73,10 +60,19 @@ function App() {
     setInfo({isOpen: false})
   }
 
+  const [taskList, setTaskList] = useState([
+    {title: "Поешь суп", text: "Гороховый, стоит в холодильнике"},
+    {title: "Напиши Маше", text: undefined},
+  ])
+
+  function removeTask(task) {
+    setTaskList(taskList.filter((item) => item.title !== task.title));
+  }
+
   return (
     <div>
-      <Side openPopup={openInfoPopup} />
-      <Popup info={info} closePopup={closePopup} />
+      <Side openPopup={openInfoPopup} taskList={taskList} />
+      <Popup info={info} closePopup={closePopup} removeTask={removeTask} />
     </div>
   );
 }
