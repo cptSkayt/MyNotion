@@ -14,19 +14,19 @@ function Block({children, ...props}) {
   )
 }
 
-function ChoresList({ children, openPopup }) {
+function ChoresList({ children, openPopup, taskDone }) {
   return (
     <Block className="chores-block">
       {children.map((child, index) => {
         return (
-          <Task key={index} func={openPopup} taskInfo={child} />
+          <Task key={index} func={openPopup} taskInfo={child} taskDone={taskDone} />
         )
       })}
     </Block>
   )
 }
 
-function Side({ openPopup, taskList }) {
+function Side({ openPopup, taskList, taskDone }) {
   return (
     <Block className="main-side">
       <Block className="person-block">
@@ -34,7 +34,7 @@ function Side({ openPopup, taskList }) {
       <Block className="side-block">
         <Title>Список задач</Title>
         <Block className="choresList-block">
-          <ChoresList openPopup={openPopup}>{taskList}</ChoresList>
+          <ChoresList openPopup={openPopup} taskDone={taskDone}>{taskList}</ChoresList>
           <TextButton>Добавить задачу</TextButton>
         </Block>
         <Block className="button-block">
@@ -61,17 +61,21 @@ function App() {
   }
 
   const [taskList, setTaskList] = useState([
-    {title: "Поешь суп", text: "Гороховый, стоит в холодильнике"},
-    {title: "Напиши Маше", text: undefined},
+    {title: "Поешь суп", text: "Гороховый, стоит в холодильнике", isDone: false},
+    {title: "Напиши Маше", text: undefined, isDone: false},
   ])
 
   function removeTask(task) {
     setTaskList(taskList.filter((item) => item.title !== task.title));
   }
 
+  function taskDone(task) {
+    setTaskList(taskList.map((item) => item.title === task.title ? {...item, isDone: true} : item));
+  }
+
   return (
     <div>
-      <Side openPopup={openInfoPopup} taskList={taskList} />
+      <Side openPopup={openInfoPopup} taskList={taskList} taskDone={taskDone} />
       <Popup info={info} closePopup={closePopup} removeTask={removeTask} />
     </div>
   );
