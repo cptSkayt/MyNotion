@@ -35,11 +35,11 @@ function Side({ taskList, closeTask, openPopup }) {
         <Title>Список задач</Title>
         <Block className="choresList-block">
           <ChoresList openPopup={openPopup} closeTask={closeTask}>{taskList}</ChoresList>
-          <TextButton openPopup={openPopup}>Добавить задачу</TextButton>
+          <TextButton flag="default" openPopup={openPopup}>Добавить задачу</TextButton>
         </Block>
         <Block className="button-block">
-          <TextButton>Настройки</TextButton>
-          <TextButton>О приложении</TextButton>
+          <TextButton flag="default">Настройки</TextButton>
+          <TextButton flag="default">О приложении</TextButton>
         </Block>
       </Block> 
     </Block>
@@ -50,6 +50,7 @@ function App() {
   const [taskList, setTaskList] = useState([
     {title: "Поешь суп", text: "Гороховый, стоит в холодильнике", isDone: false},
     {title: "Напиши Маше", text: undefined, isDone: false},
+    {title: "Заполни резюме!", isDone: true}
   ]) // Главные массив со всеми задачами
 
   const [info, setInfo] = useState({isOpen: false})
