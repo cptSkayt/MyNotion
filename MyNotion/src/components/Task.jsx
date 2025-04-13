@@ -8,7 +8,9 @@ const Task = function ({ taskInfo, closeTask, openPopup }) {
                 openPopup({key: "info", ...taskInfo});
             }
         }}>
-            <div className="task-text">{taskInfo.title}</div>
+            <div className="task-text-block">
+                <div className="task-text">{taskInfo.title}</div>
+            </div>
             <div className="task-button" onClick={() => closeTask(taskInfo)}>{taskInfo.isDone ? "✓" : ""}</div>
             <div className="cross-line"></div>
         </div>
