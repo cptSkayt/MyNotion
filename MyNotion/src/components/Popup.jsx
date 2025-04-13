@@ -18,7 +18,7 @@ const Popup = function ({ info, closePopup, removeTask, addTask }) {
         const object = {};
         return (
             <div className={info.isOpen ? "main-popup" : "main-popup close"}>
-                <div className="popup-content create">
+                <form className="popup-content create">
                     <label htmlFor="create-input">
                         <h2 className="create-title">Введите задачу</h2>
                     </label>
@@ -32,7 +32,7 @@ const Popup = function ({ info, closePopup, removeTask, addTask }) {
                     <TextButton flag="add" func={
                         [() => {object.isDone = false; addTask(object); console.log(object)}, () => closePopup()]
                         }>Добавить</TextButton>
-                </div>
+                </form>
             </div>
         )
     }

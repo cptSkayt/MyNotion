@@ -14,14 +14,10 @@ function Block({children, ...props}) {
   )
 }
 
-function ChoresList({ children, closeTask, openPopup }) {
+function Header() {
   return (
-    <Block className="chores-block">
-      {children.map((child, index) => {
-        return (
-          <Task key={index} openPopup={openPopup} taskInfo={child} closeTask={closeTask} />
-        )
-      })}
+    <Block className="main-header">
+      бам бам Хеадер
     </Block>
   )
 }
@@ -42,6 +38,18 @@ function Side({ taskList, closeTask, openPopup }) {
           <TextButton flag="default">О приложении</TextButton>
         </Block>
       </Block> 
+    </Block>
+  )
+}
+
+function ChoresList({ children, closeTask, openPopup }) {
+  return (
+    <Block className="chores-block">
+      {children.map((child, index) => {
+        return (
+          <Task key={index} openPopup={openPopup} taskInfo={child} closeTask={closeTask} />
+        )
+      })}
     </Block>
   )
 }
@@ -85,7 +93,10 @@ function App() {
 
   return (
     <div>
-      <Side openPopup={openInfoPopup} taskList={taskList} closeTask={closeTask} />
+      <Block className="very-main-block">
+        <Header />
+        <Side openPopup={openInfoPopup} taskList={taskList} closeTask={closeTask} />
+      </Block>
       <Popup info={info} closePopup={closeInfoPopup} removeTask={removeTask} addTask={addTask} />
     </div>
   );
