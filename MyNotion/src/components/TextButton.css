@@ -114,7 +114,7 @@
 
 .content-add:hover .back {
     animation: background 0.4s;
-    background-color: rgb(50, 90, 255);
+    background-color: rgb(90, 120, 255);
 
     transition: animation 1s ease-in;
     width: 100%;
@@ -126,5 +126,5 @@
 }
 
 .add-button {
-    border: 2px solid rgb(50, 90, 255);
+    border: 2px solid rgb(90, 120, 255);
 }

@@ -51,7 +51,8 @@
         cursor: pointer;
     
         &:hover {
-            background-color: rgb(240, 240, 240);
+            background-color: rgba(80, 230, 80, 0.2);
+            transition: background-color 0.2s;
         }
     }
 

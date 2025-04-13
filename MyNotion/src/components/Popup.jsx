@@ -30,7 +30,12 @@ const Popup = function ({ info, closePopup, removeTask, addTask }) {
                     <textarea id="create-textarea" onChange={(event) => (object.text = event.target.value)}/>
                     <div className="close-button" onClick={closePopup}>X</div>
                     <TextButton flag="add" func={
-                        [() => {object.isDone = false; addTask(object); console.log(object)}, () => closePopup()]
+                        [() => {
+                            event.preventDefault(); // ! Эта функция не перезагружает страницу, удалить после настройки бека
+                            object.isDone = false; 
+                            addTask(object); 
+                            console.log(object)
+                        }, () => closePopup()]
                         }>Добавить</TextButton>
                 </form>
             </div>
