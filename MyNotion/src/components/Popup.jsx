@@ -29,6 +29,7 @@ const Popup = function ({ info, closePopup, removeTask }) {
                     </label>
                     <textarea id="create-textarea" onChange={(event) => (object.text = event.target.value)}/>
                     <div className="close-button" onClick={closePopup}>X</div>
+                    <TextButton flag="add">Добавить</TextButton>
                 </div>
             </div>
         )

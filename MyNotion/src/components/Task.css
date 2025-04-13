@@ -17,6 +17,7 @@
     &:hover {
         background-color: rgb(240, 240, 240);
         cursor: pointer;
+        transition: background-color 0.2s;
     }
 
     .task-text {
