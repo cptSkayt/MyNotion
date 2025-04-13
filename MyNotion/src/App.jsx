@@ -50,7 +50,7 @@ function App() {
   const [taskList, setTaskList] = useState([
     {title: "Поешь суп", text: "Гороховый, стоит в холодильнике", isDone: false},
     {title: "Напиши Маше", text: undefined, isDone: false},
-    {title: "Заполни резюме!", isDone: true}
+    {title: "Заполни резюме!", text: undefined, isDone: true}
   ]) // Главные массив со всеми задачами
 
   const [info, setInfo] = useState({isOpen: false})
@@ -70,17 +70,23 @@ function App() {
 
 
   function removeTask(task) {
-    setTaskList(taskList.filter((item) => item.title !== task.title));
+    setTaskList(taskList.filter((item) => item.title !== task.title));  
   }
 
   function closeTask(task) {
     setTaskList(taskList.map((item) => item.title === task.title ? {...item, isDone: true} : item));
   }
 
+  function addTask(task) {
+    console.log(task);
+    setTaskList([...taskList, task]);
+    console.log(taskList);
+  }
+
   return (
     <div>
       <Side openPopup={openInfoPopup} taskList={taskList} closeTask={closeTask} />
-      <Popup info={info} closePopup={closeInfoPopup} removeTask={removeTask} />
+      <Popup info={info} closePopup={closeInfoPopup} removeTask={removeTask} addTask={addTask} />
     </div>
   );
 }

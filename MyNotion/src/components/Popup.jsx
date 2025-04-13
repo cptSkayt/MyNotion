@@ -2,7 +2,7 @@ import React from "react";
 import "./Popup.css";
 import TextButton from "./TextButton";
 
-const Popup = function ({ info, closePopup, removeTask }) {   
+const Popup = function ({ info, closePopup, removeTask, addTask }) {   
     if (info.key === "info") {
         return (
             <div className={info.isOpen ? "main-popup" : "main-popup close"}>
@@ -29,7 +29,9 @@ const Popup = function ({ info, closePopup, removeTask }) {
                     </label>
                     <textarea id="create-textarea" onChange={(event) => (object.text = event.target.value)}/>
                     <div className="close-button" onClick={closePopup}>X</div>
-                    <TextButton flag="add">Добавить</TextButton>
+                    <TextButton flag="add" func={
+                        [() => {object.isDone = false; addTask(object); console.log(object)}, () => closePopup()]
+                        }>Добавить</TextButton>
                 </div>
             </div>
         )
