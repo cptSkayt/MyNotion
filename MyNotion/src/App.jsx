@@ -4,7 +4,7 @@ import React from 'react';
 import Title from './components/Title';
 import TextButton from './components/TextButton';
 import Task from './components/Task';
-import Popup from './components/Popup';
+import Popup from './components/Popup';            //! СЕЙЧАС МЫ НЕ В MAIN-ВЕТКЕ, РАБОТАЕМ НАД ГРАМОТНЫМ HOVER У ТАСКОВ
 
 function Block({children, ...props}) {
   return (
@@ -52,7 +52,7 @@ function ChoresList({ children, closeTask, openPopup }) {
       })}
     </Block>
   )
-}
+}  // ! СЕЙЧАС МЫ НЕ В MAIN-ВЕТКЕ, РАБОТАЕМ НАД ГРАМОТНЫМ HOVER У ТАСКОВ
 
 function App() {
   const [taskList, setTaskList] = useState([
@@ -87,7 +87,7 @@ function App() {
 
   function addTask(task) {
     console.log(task);
-    setTaskList([...taskList, task]);
+    setTaskList([...taskList, task]);    //! СЕЙЧАС МЫ НЕ В MAIN-ВЕТКЕ, РАБОТАЕМ НАД ГРАМОТНЫМ HOVER У ТАСКОВ
     console.log(taskList);
   }
 
