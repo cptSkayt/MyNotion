@@ -1,4 +1,4 @@
-import { useState } from 'react'        //* Сменил ветку на первый вариант реализации
+import { useState } from 'react'
 import './General.css'
 import React from 'react';
 import Title from './components/Title';
