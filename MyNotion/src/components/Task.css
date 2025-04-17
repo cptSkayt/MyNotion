@@ -16,10 +16,11 @@
 
     .task-text-block {
         position: absolute;
+        z-index: 1;
         top: 0%;
         height: 100%;
         left: 0.5vw;
-        width: 73%;
+        width: 100%;
         overflow: hidden;
         white-space: nowrap;
 
@@ -40,12 +41,20 @@
     }
 
     .task-text {
+        max-width: 75%;
+        overflow-x: scroll;
+
         font-family: "task";
         font-weight: 300;
+
+        &::-webkit-scrollbar {
+            display: none;
+        }
     }
 
     .task-button {
         position: absolute;
+        z-index: 2;
         top: 50%;
         transform: translate(0, -50%);
         right: 2vh;
