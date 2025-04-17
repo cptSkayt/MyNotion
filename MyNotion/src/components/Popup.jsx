@@ -1,4 +1,5 @@
 import React from "react";
+import { useRef } from "react";
 import "./Popup.css";
 import TextButton from "./TextButton";
 
@@ -16,9 +17,10 @@ const Popup = function ({ info, closePopup, removeTask, addTask }) {
         )
     } else {
         const object = {};
+        const form = useRef();
         return (
             <div className={info.isOpen ? "main-popup" : "main-popup close"}>
-                <form className="popup-content create">
+                <form ref={form} className="popup-content create">
                     <label htmlFor="create-input">
                         <h2 className="create-title">Введите задачу</h2>
                     </label>
@@ -29,14 +31,16 @@ const Popup = function ({ info, closePopup, removeTask, addTask }) {
                     </label>
                     <textarea id="create-textarea" onChange={(event) => (object.text = event.target.value)}/>
                     <div className="close-button" onClick={closePopup}>X</div>
-                    <TextButton flag="add" func={
-                        [() => {
-                            event.preventDefault();
+                    <TextButton flag="add" func={[
+                        () => {
+                            event.preventDefault();  //* Добавить event после настройки бека и подгрузки списка задач
                             object.isDone = false; 
                             addTask(object); 
-                            console.log(object)
-                        }, () => closePopup()]
-                        }>Добавить</TextButton>
+                            console.log(object);
+                            form.current.reset();
+                        }, 
+                        () => closePopup()
+                    ]}>Добавить</TextButton>
                 </form>
             </div>
         )
