@@ -28,7 +28,7 @@ function Side({ taskList, closeTask, openPopup }) {
       <Block className="person-block">
       </Block>
       <Block className="side-block">
-        <Title>Список задач</Title>
+        <Title>{"Список задач"}</Title>
         <Block className="choresList-block">
           <ChoresList openPopup={openPopup} closeTask={closeTask}>{taskList}</ChoresList>
           <TextButton flag="default" openPopup={openPopup}>Добавить задачу</TextButton>

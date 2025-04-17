@@ -31,7 +31,7 @@ const Popup = function ({ info, closePopup, removeTask, addTask }) {
                     <div className="close-button" onClick={closePopup}>X</div>
                     <TextButton flag="add" func={
                         [() => {
-                            event.preventDefault(); // ! Эта функция не перезагружает страницу, удалить после настройки бека
+                            event.preventDefault();
                             object.isDone = false; 
                             addTask(object); 
                             console.log(object)
