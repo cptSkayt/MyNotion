@@ -1,4 +1,4 @@
-import { useState } from 'react' //* Коммит из main
+import { useState } from 'react'
 import './General.css'
 import React from 'react';
 import Title from './components/Title';
