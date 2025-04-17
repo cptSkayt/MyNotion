@@ -14,10 +14,27 @@ function Block({children, ...props}) {
   )
 }
 
+function NavbarButton({ children }) {
+  return (
+    <Block className="navbar-button">
+      {children}
+    </Block>
+  )
+}
+
 function Header() {
   return (
     <Block className="main-header">
-      бам бам Хеадер
+      <Block className="header-block">
+        <Block className="main-title-block">
+          <Block className="main-title-text">MyNotion</Block>
+        </Block>
+        <Block className="navbar-block">
+          <NavbarButton>Главная</NavbarButton>
+          <NavbarButton>Заметки</NavbarButton>
+          <NavbarButton>Конспекты</NavbarButton>
+        </Block>
+      </Block>
     </Block>
   )
 }
