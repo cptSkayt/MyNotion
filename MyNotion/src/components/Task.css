@@ -19,7 +19,7 @@
         top: 0%;
         height: 100%;
         left: 0.5vw;
-        width: 73%;    /*! СЕЙЧАС МЫ НЕ В MAIN-ВЕТКЕ, РАБОТАЕМ НАД ГРАМОТНЫМ HOVER У ТАСКОВ*/
+        width: 73%;
         overflow: hidden;
         white-space: nowrap;
 
