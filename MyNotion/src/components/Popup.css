@@ -5,7 +5,7 @@
 
 @font-face {
     font-family: "description";
-    src: url("/Inter.ttf"), format('ttf');
+    src: url("/manual.ttf"), format('ttf');
 }
 
 @keyframes popup {
