@@ -6,6 +6,8 @@ import TextButton from './components/TextButton';
 import Task from './components/Task';
 import Popup from './components/Popup';
 
+const URLParams = {};
+
 function Block({children, ...props}) {
   return (
     <div {...props}>
@@ -39,13 +41,11 @@ function Header() {
   )
 }
 
-function Side({ taskList, closeTask, openPopup }) {
-  return (
-    <Block className="main-side">
-      <Block className="person-block">
-      </Block>
+function Side({ page, taskList, closeTask, openPopup }) {
+  if (page == 'task' || page == 'main') {
+    return (
       <Block className="side-block">
-        <Title>{"Список задач"}</Title>
+        <Title>Список задач</Title>
         <Block className="choresList-block">
           <ChoresList openPopup={openPopup} closeTask={closeTask}>{taskList}</ChoresList>
           <TextButton flag="default" openPopup={openPopup}>Добавить задачу</TextButton>
@@ -55,8 +55,14 @@ function Side({ taskList, closeTask, openPopup }) {
           <TextButton flag="default">О приложении</TextButton>
         </Block>
       </Block> 
-    </Block>
-  )
+    )
+  } else {
+    return (
+      <Block className="side-block">
+        <Title>Поиск по тегу</Title>
+      </Block>
+    )
+  }
 }
 
 function ChoresList({ children, closeTask, openPopup }) {
@@ -72,10 +78,18 @@ function ChoresList({ children, closeTask, openPopup }) {
 }
 
 function App() {
+  const parametrs = new URLSearchParams(window.location.search);
+  for (const [key, value] of parametrs.entries()) {
+      URLParams[key] = value;
+  }
+
+  console.log(URLParams)
+
   const [taskList, setTaskList] = useState([
     {title: "Поешь суп", text: "Гороховый, стоит в холодильнике", isDone: false},
     {title: "Напиши Маше", text: undefined, isDone: false},
-    {title: "Заполни резюме!", text: undefined, isDone: true}
+    // {title: "Заполни резюме!", text: undefined, isDone: true},
+    {title: "Посмотри петли", text: undefined, isDone: false}
   ]) // Главные массив со всеми задачами
 
   const [info, setInfo] = useState({isOpen: false})
@@ -112,7 +126,12 @@ function App() {
     <div>
       <Block className="very-main-block">
         <Header />
-        <Side openPopup={openInfoPopup} taskList={taskList} closeTask={closeTask} />
+        <Block className="main-side">
+          <Block className="person-block">
+            {/* ? Можно сделать отдельным элементом, а не классом */}
+          </Block>
+          <Side openPopup={openInfoPopup} taskList={taskList} closeTask={closeTask} page={URLParams.page}/>
+        </Block>
       </Block>
       <Popup info={info} closePopup={closeInfoPopup} removeTask={removeTask} addTask={addTask} />
     </div>

@@ -107,7 +107,7 @@
         position: absolute;
         top: 50%;
         transform: translate(0, -50%);
-        left: 1vw;
+        left: 0.5vw;
         width: 70%;
         overflow: hidden;
         white-space: nowrap;
