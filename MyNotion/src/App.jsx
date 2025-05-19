@@ -16,9 +16,13 @@ function Block({children, ...props}) {
   )
 }
 
-function NavbarButton({ children }) {
+function NavbarButton({ page, children }) {
+  function Path(page) {
+    window.location.href = "/?page=" + page
+  }
+
   return (
-    <Block className="navbar-button">
+    <Block className="navbar-button" onClick={() => Path(page)}>
       {children}
     </Block>
   )
@@ -32,9 +36,9 @@ function Header() {
           <Block className="main-title-text">MyNotion</Block>
         </Block>
         <Block className="navbar-block">
-          <NavbarButton>Главная</NavbarButton>
-          <NavbarButton>Заметки</NavbarButton>
-          <NavbarButton>Конспекты</NavbarButton>
+          <NavbarButton page="main">Главная</NavbarButton>
+          <NavbarButton page="note">Заметки</NavbarButton>
+          <NavbarButton page="concept">Конспекты</NavbarButton>
         </Block>
       </Block>
     </Block>
@@ -56,10 +60,16 @@ function Side({ page, taskList, closeTask, openPopup }) {
         </Block>
       </Block> 
     )
-  } else {
+  } if (page == 'note') {
     return (
       <Block className="side-block">
-        <Title>Поиск по тегу</Title>
+        <Title>Заметки</Title>
+      </Block>
+    )
+  } if (page == 'concept') {
+    return (
+      <Block className="side-block">
+        <Title>Конспекты</Title>
       </Block>
     )
   }
