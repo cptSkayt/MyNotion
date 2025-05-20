@@ -96,10 +96,10 @@ function App() {
   console.log(URLParams)
 
   const [taskList, setTaskList] = useState([
-    {title: "Поешь суп", text: "Гороховый, стоит в холодильнике", isDone: false},
-    {title: "Напиши Маше", text: undefined, isDone: false},
-    // {title: "Заполни резюме!", text: undefined, isDone: true},
-    {title: "Посмотри петли", text: undefined, isDone: false}
+    {title: "Поешь суп", description: "Гороховый, стоит в холодильнике", isDone: false},
+    {title: "Напиши Маше", description: undefined, isDone: false},
+    // {title: "Заполни резюме!", description: undefined, isDone: true},
+    // {title: "Посмотри петли", description: undefined, isDone: false}
   ]) // Главные массив со всеми задачами
 
   const [info, setInfo] = useState({isOpen: false})

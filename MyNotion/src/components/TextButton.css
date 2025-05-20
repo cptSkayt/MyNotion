@@ -64,7 +64,7 @@
 
 .content-default:hover .back {
     animation: background 0.4s;
-    background-color: rgb(180, 180, 180);
+    background-color: var(--main-border-color);
 
     transition: animation 1s ease-in;
     width: 100%;
@@ -76,7 +76,7 @@
 }
 
 .default-button {
-    border: 2px solid rgb(180, 180, 180);
+    border: 2px solid var(--main-border-color);
 }
 
 .remove-block {

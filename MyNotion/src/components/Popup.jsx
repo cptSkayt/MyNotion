@@ -9,7 +9,7 @@ const Popup = function ({ info, closePopup, removeTask, addTask }) {
             <div className={info.isOpen ? "main-popup" : "main-popup close"}>
                 <div className="popup-content">
                     <div className="popup-title">{info.title}</div>
-                    <div className="popup-text">{info.text !== undefined ? info.text : "Описание отсутствует"}</div>
+                    <div className="popup-text">{info.description !== undefined ? info.description : "Описание отсутствует"}</div>
                     <TextButton flag="remove" func={[() => removeTask(info), () => closePopup()]}>Удалить</TextButton>
                     <div className="close-button" onClick={closePopup}>X</div>
                 </div>
@@ -21,15 +21,19 @@ const Popup = function ({ info, closePopup, removeTask, addTask }) {
         return (
             <div className={info.isOpen ? "main-popup" : "main-popup close"}>
                 <form ref={form} className="popup-content create">
-                    <label htmlFor="create-input">
-                        <h2 className="create-title">Введите задачу</h2>
-                    </label>
-                    <input id="create-input" type="text" onChange={(event) => (object.title = event.target.value)}/>
+                    <div className="title-input-block">
+                        <label htmlFor="create-input">
+                            <h2 className="create-title">Введите задачу</h2>
+                        </label>
+                        <input id="create-input" type="text" onChange={(event) => (object.title = event.target.value)}/>
+                    </div>
 
-                    <label htmlFor="create-textarea">
-                        <h2 className="create-title">Дополнительное описание</h2>
-                    </label>
-                    <textarea id="create-textarea" onChange={(event) => (object.text = event.target.value)}/>
+                    <div className="description-input-block">
+                        <label htmlFor="create-textarea">
+                            <h2 className="create-title">Дополнительное описание</h2>
+                        </label>
+                        <textarea id="create-textarea" onChange={(event) => (object.description = event.target.value)}/>
+                    </div>
                     <div className="close-button" onClick={closePopup}>X</div>
                     <TextButton flag="add" func={[
                         () => {

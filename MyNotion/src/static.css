@@ -1,0 +1,24 @@
+@font-face {
+    font-family: "title";
+    src: url("/News-text.ttf"), format('ttf');
+}
+
+@font-face {
+    font-family: "description";
+    src: url("/manual.ttf"), format('ttf');
+}
+
+@font-face {
+    font-family: "task";
+    src: url("/Unbounded.ttf"), format('ttf');
+}
+
+:root {
+    --title-font: 'title';
+    --description-font: 'description';
+    --task-font: 'task';
+
+    --main-background-color: rgb(230, 230, 230);
+    --button-hover-color: rgb(210, 210, 210);
+    --main-border-color: rgb(180, 180, 180);
+}

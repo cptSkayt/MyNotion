@@ -1,7 +1,4 @@
-@font-face {
-    font-family: "task";
-    src: url("/Unbounded.ttf"), format('ttf');
-}
+@import url("/src/static.css");
 
 .task-block:not(.done) {
     position: relative;
@@ -11,7 +8,7 @@
     margin-left: 3%;
 
     border-radius: 10px;
-    border: 2px solid rgb(180, 180, 180);
+    border: 2px solid var(--main-border-color);
     background-color: rgb(250, 250, 250);
 
     .task-text-block {
@@ -44,7 +41,7 @@
         max-width: 75%;
         overflow-x: scroll;
 
-        font-family: "task";
+        font-family: var(--task-font);
         font-weight: 300;
 
         &::-webkit-scrollbar {
@@ -61,7 +58,7 @@
         width: 3vh;
         height: 3vh;
         border-radius: 50%;
-        border: 2px solid rgb(180, 180, 180);
+        border: 2px solid var(--main-border-color);
         background-color: rgb(250, 250, 250);
     
         display: flex;
@@ -112,7 +109,7 @@
         overflow: hidden;
         white-space: nowrap;
     
-        font-family: "task";
+        font-family: var(--task-font);
         font-weight: 300;
         color: grey;
 
