@@ -1,4 +1,3 @@
-import React from "react";
 import "./Task.css";
 
 const Task = function ({ taskInfo, closeTask, openPopup }) {

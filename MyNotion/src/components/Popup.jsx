@@ -1,4 +1,3 @@
-import React from "react";
 import { useRef } from "react";
 import "./Popup.css";
 import TextButton from "./TextButton";

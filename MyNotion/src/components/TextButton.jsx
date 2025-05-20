@@ -1,4 +1,3 @@
-import React from "react";
 import './TextButton.css';
 
 const TextButton = function ({ flag, children, openPopup, func}) {

@@ -1,6 +1,5 @@
 import { useState } from 'react'
 import './General.css'
-import React from 'react';
 import Title from './components/Title';
 import TextButton from './components/TextButton';
 import Task from './components/Task';
