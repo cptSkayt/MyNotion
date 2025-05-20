@@ -1,7 +1,4 @@
-@font-face {
-    font-family: "title";
-    src: url("/News-text.ttf"), format('ttf');
-}
+@import url('/src/static.css');
 
 .title {
     user-select: none;
@@ -10,10 +7,10 @@
     height: 40px;
     margin: 0px;
 
-    background-color: rgb(180, 180, 180);
+    background-color: var(--main-border-color);
     text-align: center;
     line-height: 35px;
     color: white;
-    font-family: "title";
+    font-family: var(--title-font);
     cursor: default;
 }

@@ -100,7 +100,7 @@
 
     &:hover {
         cursor: pointer;
-        background-color: var(--button-hover-color);
+        background-color: var(--hover-color);
         transition: background-color 0.4s;
     }
 }

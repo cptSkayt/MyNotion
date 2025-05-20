@@ -67,7 +67,7 @@
     font-size: x-large;
 
     &:hover {
-        background-color: var(--button-hover-color);
+        background-color: var(--hover-color);
         border-radius: 10px;
         cursor: pointer;
         transition: background-color 0.2s;
