@@ -16,7 +16,7 @@
     height: 10vh;
     cursor: default;
 
-    background-color: var(--main-background-color);
+    background-color: var(--background-light-color);
 }
 
 .header-block {
@@ -67,7 +67,7 @@
     font-size: x-large;
 
     &:hover {
-        background-color: var(--hover-color);
+        background-color: var(--hover-light-color);
         border-radius: 10px;
         cursor: pointer;
         transition: background-color 0.2s;
@@ -85,7 +85,7 @@
     left: 0;
     width: 23vw;
     height: 100%;
-    background-color: var(--main-background-color);
+    background-color: var(--background-light-color);
 }
 
 .person-block {

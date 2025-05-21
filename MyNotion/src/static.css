@@ -18,7 +18,8 @@
     --description-font: 'description';
     --task-font: 'task';
 
-    --main-background-color: rgb(230, 230, 230);
-    --hover-color: rgb(210, 210, 210);
-    --main-border-color: rgb(180, 180, 180);
+    --background-light-color: rgb(230, 230, 230);
+    --hover-light-color: rgb(210, 210, 210);
+    --border-light-color: rgb(180, 180, 180);
+    --shadow-light-color: rgb(250, 250, 250);
 }
