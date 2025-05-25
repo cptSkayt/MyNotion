@@ -1,0 +1,66 @@
+@import url('/src/static.css');
+
+.note {
+    width: 240px;
+    height: 150px;
+    margin: 10px;
+    
+    border: 3px solid var(--border-light-color);
+    border-radius: 10px;
+    overflow: hidden;
+
+    transition: all 0.2s;
+    &:hover {
+        transform: translateY(-2px);
+        box-shadow: 5px 5px 5px var(--background-light-color);
+        cursor: pointer;
+    }
+
+    &:active {
+        transform: translateY(1px);
+        box-shadow: none;
+    }
+}
+
+.main {
+    width: 100%;
+    height: 60%;
+}
+
+.footer {
+    width: 100%;
+    height: 40%;
+    position: relative;
+    
+    background-color: var(--background-light-color);
+}
+
+.imp-button {
+    position: absolute;
+    z-index: 2;
+    top: 50%;
+    transform: translate(0, -50%);
+    right: 2vh;
+    width: 3vh;
+    height: 3vh;
+    border-radius: 50%;
+    border: 2px solid var(--border-light-color);
+    background-color: rgb(250, 250, 250);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5vh;
+    cursor: pointer;
+
+    &:hover {
+        background-color: rgba(255, 200, 200, 0.8);
+        transition: background-color 0.2s;
+    }
+}
+
+.active {
+    border: none;
+    background-color: rgb(255, 130, 130);
+    color: white;
+}

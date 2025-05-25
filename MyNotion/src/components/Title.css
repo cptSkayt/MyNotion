@@ -2,15 +2,30 @@
 
 .title {
     user-select: none;
-    
-    width: 100%;
+    cursor: default;
     height: 40px;
+
+    font-family: var(--title-font);
+}
+
+.border-title {
+    width: 100%;
+
     margin: 0px;
 
     background-color: var(--border-light-color);
     text-align: center;
     line-height: 35px;
     color: white;
-    font-family: var(--title-font);
-    cursor: default;
+}
+
+.open-title {
+    width: 95%;
+    padding-left: 5%;
+    margin: 0px;
+    background-color: transparent;
+    line-height: 35px;
+    color: rgb(40, 40, 40);
+
+    font-size: large;
 }

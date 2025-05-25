@@ -13,10 +13,16 @@
     src: url("/Unbounded.ttf"), format('ttf');
 }
 
+@font-face {
+    font-family: 'Comfortaa';
+    src: url("Comfortaa.ttf"), format('ttf');
+}
+
 :root {
     --title-font: 'title';
     --description-font: 'description';
     --task-font: 'task';
+    --button-font: 'Comfortaa';
 
     --background-light-color: rgb(230, 230, 230);
     --hover-light-color: rgb(210, 210, 210);
