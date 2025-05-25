@@ -4,8 +4,8 @@
     position: relative;
 
     height: 7vh;
-    width: 94%;
-    margin-left: 3%;
+    width: calc(98% - 4px);
+    margin-left: 1%;
 
     border-radius: 10px;
     border: 2px solid var(--border-light-color);
@@ -17,7 +17,7 @@
         top: 0%;
         height: 100%;
         left: 0.5vw;
-        width: 100%;
+        width: calc(100% - 0.5vw);
         overflow: hidden;
         white-space: nowrap;
 
@@ -26,7 +26,7 @@
         justify-content: center;
 
         &:hover {
-            width: calc(100% - 0.5vw);
+            /* width: 100%; */
             left: 0;
             padding-left: 0.5vw;
             border-radius: 10px;
