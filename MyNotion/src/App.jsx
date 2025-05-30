@@ -49,7 +49,7 @@ function Side({ page, taskList, closeTask, openPopup }) {
   if (page == 'main' || page == 'settings' || page == 'about') {
     return (
       <Block className="side-block">
-        <Title format="border-title">Список задач</Title>
+        <Title status="none" format="border-title">Список задач</Title>
         <Block className="choresList-block">
           <ChoresList openPopup={openPopup} closeTask={closeTask}>{taskList}</ChoresList>
           <TextButton flag="default" openPopup={openPopup}>Добавить задачу</TextButton>
@@ -67,13 +67,13 @@ function Side({ page, taskList, closeTask, openPopup }) {
   } if (page == 'note') {
     return (
       <Block className="side-block">
-        <Title format="border-title">?</Title>
+        <Title status="none" format="border-title">?</Title>
       </Block>
     )
   } if (page == 'write') {
     return (
       <Block className="side-block">
-        <Title format="border-title">Поиск по тегу</Title>
+        <Title status="none" format="border-title">Поиск по тегу</Title>
       </Block>
     )
   }
@@ -92,10 +92,41 @@ function ChoresList({ children, closeTask, openPopup }) {
 }
 
 function General({ page }) {
+  const [importantNoteList, setImportantNoteList] = useState([
+    {status: "important", name: "ДР"},
+  ])
+
+  const [generalNoteList, setGeneralNoteList] = useState([
+    {status: "general", name: "Конспекты по физике"},
+  ])
+
+  function toImportant(note) {
+    for (let i = 0; i < generalNoteList.length; i++) {
+      if (generalNoteList[i].name == note.name) {
+        note.status = "important"
+        generalNoteList.splice(i, 1);
+        break
+      }
+    }
+    setImportantNoteList([...importantNoteList, note])
+  }
+
+  function toGeneral(note) {
+    for (let i = 0; i < importantNoteList.length; i++) {
+      if (importantNoteList[i].name == note.name) {
+        note.status = "general"
+        importantNoteList.splice(i, 1);
+        break
+      }
+    }
+    setGeneralNoteList([note, ...generalNoteList])
+  }
+
   if (page == 'main') {
     return (
       <Block className="general-block">
-        Блок со всем
+        <Title status="button" format="open-title">Заметки</Title>
+        <Title status="button" format="open-title">Записи</Title>
       </Block>
     )
   }
@@ -111,18 +142,19 @@ function General({ page }) {
       <Block className="general-block">
         <Title format="open-title">Важное</Title>
         <Block height="important" className="note-block">
-          <Note></Note>
-          <Note></Note>
-          <Note></Note>
+          {importantNoteList.map((note, index) => {
+            return (
+              <Note key={index} noteInfo={note} toImportant={toImportant} toGeneral={toGeneral}/>
+            )
+          })}
         </Block>
         <Title format="open-title">Основное</Title>
         <Block height="other" className="note-block">
-          <Note></Note>
-          <Note></Note>
-          <Note></Note>
-          <Note></Note>
-          <Note></Note>
-          <Note></Note>
+          {generalNoteList.map((note, index) => {
+            return (
+              <Note key={index} noteInfo={note} toImportant={toImportant} toGeneral={toGeneral}/>
+            )
+          })}
         </Block>
       </Block>
     )
@@ -152,16 +184,16 @@ function App() {
   console.log(URLParams)
 
   const [taskList, setTaskList] = useState([
-    {title: "Поешь суп", description: "Гороховый, стоит в холодильнике", isDone: false},
+    {title: "Добавить код", description: "Добавить в MyNotion панель в заметках и конспектах с добавлением фотографии/кода или похожего текста/цитаты В тексте их выделить цветными блоками или как-то так", isDone: false},
     {title: "Напиши Маше", description: undefined, isDone: false},
-    // {title: "Заполни резюме!", description: undefined, isDone: true},
-    // {title: "Посмотри петли", description: undefined, isDone: false}
+    {title: "Добавить удаление", description: "Добавить настройку сохранения последних трех удаленных/выполненых задач", isDone: false},
+    {title: "Настройка тасков", description: "Новые задачи снизу/сверху", isDone: false},
   ]) // Главные массив со всеми задачами
 
   const [info, setInfo] = useState({isOpen: false})
 
   const personDict = {
-    name: "Береговой Лев",
+    name: "Замолодчиков Алексей",
   }
 
   function openInfoPopup(object) {
@@ -187,9 +219,7 @@ function App() {
   }
 
   function addTask(task) {
-    console.log(task);
-    setTaskList([...taskList, task]);
-    console.log(taskList);
+    setTaskList([task, ...taskList]);
   }
   return (   
     <div>

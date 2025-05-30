@@ -1,8 +1,11 @@
 import './Title.css';
 
-const Title = function ({ format, children }) {
+const Title = function ({ status, format, children }) {
     return (
-        <h2 className={"title" + " " + format}>{children}</h2>
+        <h2 className={"title" + " " + format}>
+            {children}
+            <div className={status === 'button' ? "title-button" : "title-button none"}></div>
+        </h2>
     )
 }
 

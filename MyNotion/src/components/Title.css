@@ -1,31 +1,76 @@
 @import url('/src/static.css');
 
+.title-block {
+}
+
 .title {
-    user-select: none;
-    cursor: default;
+    width: 100%;
     height: 40px;
+    margin: 0;
+
+    cursor: default;
+    user-select: none;
 
     font-family: var(--title-font);
+    display: flex;
+
+    flex-direction: row;
+    justify-content: center;
 }
 
 .border-title {
     width: 100%;
-
     margin: 0px;
 
     background-color: var(--border-light-color);
-    text-align: center;
-    line-height: 35px;
     color: white;
+    /* text-align: center; */
+    line-height: 35px;
 }
 
 .open-title {
     width: 95%;
+    height: 30px;
     padding-left: 5%;
     margin: 0px;
     background-color: transparent;
-    line-height: 35px;
     color: rgb(40, 40, 40);
 
+    display: flex;
+    flex-direction: row;
+    justify-content: left;
+    align-items: center;
+
     font-size: large;
+
+    &:hover {
+        background-color: rgb(210, 210, 210);
+        transition: all 0.2s;
+    }
+}
+
+.none {
+    display: none;
+}
+
+.title-button:not(.none) {
+    display: none;
+}
+
+.open-title:hover .title-button:not(.none) {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    margin-left: 50px;
+
+    background-image: url('/plus.png');
+    background-size: contain;
+    background-position: center;
+
+    cursor: pointer;
+
+    &:hover {
+        transform: translateY(-1px);
+        transition: all 0.2s;
+    }
 }

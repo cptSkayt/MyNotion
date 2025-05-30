@@ -84,6 +84,8 @@
     height: auto;
     font-size: 2vh;
     font-family: var(--description-font);
+
+    white-space: pre-wrap;
 }
 
 .close-button {

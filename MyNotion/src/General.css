@@ -140,12 +140,16 @@
     cursor: default;
 
     font-family: var(--task-font);
-    font-size: medium;
+    font-size: small;
     letter-spacing: 5px;
 
     display: flex;
     flex-direction: column;
     justify-content: start;
+
+    &::-webkit-scrollbar {
+        width: 0px;
+    }
 }
 
 .person-account-button {
@@ -217,7 +221,7 @@
 
 .note-block {
     width: calc(100% - 10px);
-    max-height: calc(70% - 20px);
+    max-height: calc(75% - 20px);
     padding-left: 10px;
 
     display: flex;
@@ -240,5 +244,5 @@
 }
 
 [height="other"] {
-    max-height: calc(60% - 20px - 40px);
+    max-height: calc(65% - 20px - 40px);
 }

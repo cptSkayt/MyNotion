@@ -23,8 +23,25 @@
 }
 
 .main {
+    user-select: none;
     width: 100%;
     height: 60%;
+    /* padding: 10px 20px; */
+
+    overflow: scroll;
+
+    &::-webkit-scrollbar {
+        width: 0;
+    }
+}
+
+.note-title {
+    width: calc(100% - 40px);
+    height: calc(100% - 20px);
+    margin: 10px 20px;
+
+    font-family: var(--task-font);
+    font-size: medium;
 }
 
 .footer {
@@ -61,6 +78,22 @@
 
 .active {
     border: none;
-    background-color: rgb(255, 130, 130);
+    background-color: rgb(255, 110, 110);
     color: white;
+
+    font-family: var(--title-font);
+    font-size: 100%;
+
+    &:hover {
+        background-color: rgb(100, 100, 100);
+        transition: all 0.3s;
+
+        &::after {
+            content: '✘';
+        }
+    }
+
+    &::after {
+        content: '!';
+    }
 }
