@@ -1,4 +1,4 @@
-import './Note.css';
+import './Write.css';
 
 function Note({ noteInfo, toImportant, toGeneral }) {
     return (

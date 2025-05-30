@@ -4,7 +4,7 @@ import Title from './components/Title';
 import TextButton from './components/TextButton';
 import Task from './components/Task';
 import Popup from './components/Popup';
-import Note from './components/Note';
+import Note from './components/Write';
 
 const URLParams = {};
 
@@ -92,41 +92,63 @@ function ChoresList({ children, closeTask, openPopup }) {
 }
 
 function General({ page }) {
-  const [importantNoteList, setImportantNoteList] = useState([
+  const [importantWriteList, setImportantWriteList] = useState([
     {status: "important", name: "ДР"},
   ])
 
-  const [generalNoteList, setGeneralNoteList] = useState([
+  const [generalWriteList, setGeneralWriteList] = useState([
     {status: "general", name: "Конспекты по физике"},
   ])
 
-  function toImportant(note) {
-    for (let i = 0; i < generalNoteList.length; i++) {
-      if (generalNoteList[i].name == note.name) {
-        note.status = "important"
-        generalNoteList.splice(i, 1);
+  function toImportant(write) {
+    for (let i = 0; i < generalWriteList.length; i++) {
+      if (generalWriteList[i].name == write.name) {
+        write.status = "important"
+        generalWriteList.splice(i, 1);
         break
       }
     }
-    setImportantNoteList([...importantNoteList, note])
+    setImportantWriteList([...importantWriteList, write]) 
   }
 
-  function toGeneral(note) {
-    for (let i = 0; i < importantNoteList.length; i++) {
-      if (importantNoteList[i].name == note.name) {
-        note.status = "general"
-        importantNoteList.splice(i, 1);
+  function toGeneral(write) {
+    for (let i = 0; i < importantWriteList.length; i++) {
+      if (importantWriteList[i].name == write.name) {
+        write.status = "general"
+        importantWriteList.splice(i, 1);
         break
       }
     }
-    setGeneralNoteList([note, ...generalNoteList])
+    setGeneralWriteList([write, ...generalWriteList])
   }
 
   if (page == 'main') {
     return (
       <Block className="general-block">
         <Title status="button" format="open-title">Заметки</Title>
+        <Block className="main-note-block">
+          <Block className="main-notes">
+            <div className="kirp"></div>
+            <div className="kirp"></div>
+            <div className="kirp"></div>
+            <div className="kirp"></div>
+            <div className="kirp"></div>
+            <div className="kirp"></div>
+          </Block>
+        </Block>
         <Title status="button" format="open-title">Записи</Title>
+        <Block className="main-write-block">
+          {importantWriteList.map((write, index) => {
+            return (
+              <Note key={index} noteInfo={write} toImportant={toImportant} toGeneral={toGeneral}/>
+            )
+          })}
+          {generalWriteList.map((write, index) => {
+            return (
+              <Note key={index} noteInfo={write} toImportant={toImportant} toGeneral={toGeneral}/>
+            )
+          })}
+        </Block>
       </Block>
     )
   }
@@ -141,18 +163,18 @@ function General({ page }) {
     return (
       <Block className="general-block">
         <Title format="open-title">Важное</Title>
-        <Block height="important" className="note-block">
-          {importantNoteList.map((note, index) => {
+        <Block height="important" className="write-write-block">
+          {importantWriteList.map((write, index) => {
             return (
-              <Note key={index} noteInfo={note} toImportant={toImportant} toGeneral={toGeneral}/>
+              <Note key={index} noteInfo={write} toImportant={toImportant} toGeneral={toGeneral}/>
             )
           })}
         </Block>
         <Title format="open-title">Основное</Title>
-        <Block height="other" className="note-block">
-          {generalNoteList.map((note, index) => {
+        <Block height="other" className="write-write-block">
+          {generalWriteList.map((write, index) => {
             return (
-              <Note key={index} noteInfo={note} toImportant={toImportant} toGeneral={toGeneral}/>
+              <Note key={index} noteInfo={write} toImportant={toImportant} toGeneral={toGeneral}/>
             )
           })}
         </Block>
@@ -188,6 +210,7 @@ function App() {
     {title: "Напиши Маше", description: undefined, isDone: false},
     {title: "Добавить удаление", description: "Добавить настройку сохранения последних трех удаленных/выполненых задач", isDone: false},
     {title: "Настройка тасков", description: "Новые задачи снизу/сверху", isDone: false},
+    {title: "Братья Стругацкие", description: "Прочитать Братья Стругацкие - Отель у погибшего альпиниста", isDone: false},
   ]) // Главные массив со всеми задачами
 
   const [info, setInfo] = useState({isOpen: false})
