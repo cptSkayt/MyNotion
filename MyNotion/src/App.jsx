@@ -88,7 +88,7 @@ function ChoresList({ children, closeTask, openPopup }) {
   )
 }
 
-function General({ page }) {
+function General({ page, openScreen }) {
   const [importantWriteList, setImportantWriteList] = useState([
     {status: "important", name: "ДР"},
   ])
@@ -122,7 +122,7 @@ function General({ page }) {
   if (page == 'main') {
     return (
       <Block className="general-block">
-        <Title status="button" format="open-title">Заметки</Title>
+        <Title status="button" format="open-title" openScreen={openScreen}>Заметки</Title>
         <Block className="main-note-block">
           <Block className="main-notes">
             <div className="kirp"></div>
@@ -133,16 +133,16 @@ function General({ page }) {
             <div className="kirp"></div>
           </Block>
         </Block>
-        <Title status="button" format="open-title">Записи</Title>
+        <Title status="button" format="open-title" openScreen={openScreen}>Записи</Title>
         <Block className="main-write-block">
           {importantWriteList.map((write, index) => {
             return (
-              <Write key={index} noteInfo={write} toImportant={toImportant} toGeneral={toGeneral}/>
+              <Write key={index} noteInfo={write} toImportant={toImportant} toGeneral={toGeneral} openScreen={openScreen} />
             )
           })}
           {generalWriteList.map((write, index) => {
             return (
-              <Write key={index} noteInfo={write} toImportant={toImportant} toGeneral={toGeneral}/>
+              <Write key={index} noteInfo={write} toImportant={toImportant} toGeneral={toGeneral} openScreen={openScreen} />
             )
           })}
         </Block>
@@ -161,7 +161,7 @@ function General({ page }) {
           <div className="kirp"></div>
         </Block>
         <Block className="main-add-button-block">
-          <Block className="main-add-button">+</Block>
+          <Block className="main-add-button" onClick={() => openScreen({title: "Создание новой заметки"})}>+</Block>
         </Block>
       </Block>
     )
@@ -173,7 +173,7 @@ function General({ page }) {
         <Block height="important" className="write-write-block">
           {importantWriteList.map((write, index) => {
             return (
-              <Write key={index} noteInfo={write} toImportant={toImportant} toGeneral={toGeneral}/>
+              <Write key={index} noteInfo={write} toImportant={toImportant} toGeneral={toGeneral} openScreen={openScreen} />
             )
           })}
         </Block>
@@ -181,12 +181,12 @@ function General({ page }) {
         <Block height="other" className="write-write-block">
           {generalWriteList.map((write, index) => {
             return (
-              <Write key={index} noteInfo={write} toImportant={toImportant} toGeneral={toGeneral}/>
+              <Write key={index} noteInfo={write} toImportant={toImportant} toGeneral={toGeneral} openScreen={openScreen} />
             )
           })}
         </Block>
         <Block className="main-add-button-block">
-          <Block className="main-add-button">+</Block>
+          <Block className="main-add-button" onClick={() => openScreen({title: "Создание новой записи"})}>+</Block>
         </Block>
       </Block>
     )
@@ -278,7 +278,7 @@ function App() {
           </Block>
           <Side openScreen={openScreen} openPopup={openInfoPopup} taskList={taskList} closeTask={closeTask} page={URLParams.page}/>
         </Block>
-        <General page={URLParams.page}>
+        <General page={URLParams.page} openScreen={openScreen}>
         </General>
       </Block>
       <Popup info={info} closePopup={closeInfoPopup} removeTask={removeTask} addTask={addTask} />

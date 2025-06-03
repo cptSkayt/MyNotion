@@ -1,10 +1,10 @@
 import './Write.css';
 
-function Write({ noteInfo, toImportant, toGeneral }) {
+function Write({ noteInfo, toImportant, toGeneral, openScreen }) {
     return (
-        <div className="note">
+        <div className="write" onClick={() => openScreen({title: noteInfo.name, status: "write"})}>
             <div className="main">
-                <div className="note-title">{noteInfo.name}</div>
+                <div className="write-title">{noteInfo.name}</div>
             </div>
             <div className="footer">
                 <div className="tag-block">

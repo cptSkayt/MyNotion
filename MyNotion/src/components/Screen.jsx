@@ -1,6 +1,10 @@
 import "./Screen.css";
 
 const Screen = function ({ screen, closeScreen }) {
+    if (screen.status === "write") {
+        console.log("Жесткий запрос к беку")
+    }
+    
     return (
         <div className={ screen.isOpen ? "screen-main-block" : "screen-main-block close"}>
           <div className="screen-header">
