@@ -1,6 +1,6 @@
 import './Write.css';
 
-function Note({ noteInfo, toImportant, toGeneral }) {
+function Write({ noteInfo, toImportant, toGeneral }) {
     return (
         <div className="note">
             <div className="main">
@@ -17,4 +17,4 @@ function Note({ noteInfo, toImportant, toGeneral }) {
     )
 }
 
-export default Note
+export default Write

@@ -246,6 +246,31 @@
     }
 }
 
+.note-note-block {
+    width: 100%;
+    height: calc(100% - 30px - 80px);
+
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+
+    overflow-y: scroll;
+
+    &::-webkit-scrollbar {
+        width: 10px;
+    }
+
+    &::-webkit-scrollbar-track {
+        background: white;
+    }
+
+    &::-webkit-scrollbar-thumb {
+        background-color: var(--border-light-color);
+        border-radius: 20px;
+        border: 2px solid var(--border-light-color);
+    }
+}
+
 .main-write-block {
     left: 23vw;
     top: 10vh;
@@ -275,12 +300,13 @@
     overflow: scroll;
 
     &::-webkit-scrollbar {
-        width: 0px;
+        display: none;
     }
 }
 
+/* ! УДАЛИТЬ */
 .kirp {
-    width: 270px;
+    width: 280px;
     height: 300px;
 
     border-radius: 10px;
@@ -289,14 +315,56 @@
     margin: 10px;
 }
 
-.note-block + .note-block {
-    margin-top: 20px;
-}
-
 [height="important"] {
-    max-height: calc(40% - 40px);
+    max-height: calc(40% - 30px);
 }
 
 [height="other"] {
-    max-height: calc(65% - 20px - 40px);
+    max-height: calc(60% - 30px - 80px);
+}
+
+.main-add-button-block {
+    position: absolute;
+    width: 100%;
+    height: 80px;
+    bottom: 0;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: right;
+    align-items: center;
+}
+
+.main-add-button {
+    user-select: none;
+    cursor: pointer;
+
+    position: static;
+    width: 60px;
+    height: 60px;
+    margin-right: 100px;
+
+    border-radius: 10px;
+    outline: 2px solid var(--border-light-color);
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    font-size: 40px;
+    font-family: var(--title-font);
+    color: rgb(60, 60, 60);
+
+    transition: all 0.2s;
+
+    &:hover {
+        box-shadow: 5px 5px 5px var(--background-light-color);
+        transform: translateY(-2px);
+    }
+
+    &:active {
+        transform: translateY(1px);
+        box-shadow: none;
+    }
 }

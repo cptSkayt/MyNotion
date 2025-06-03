@@ -3,8 +3,9 @@ import './General.css'
 import Title from './components/Title';
 import TextButton from './components/TextButton';
 import Task from './components/Task';
+import Write from './components/Write';
 import Popup from './components/Popup';
-import Note from './components/Write';
+import Screen from './components/Screen';
 
 const URLParams = {};
 
@@ -45,8 +46,8 @@ function NavbarButton({ page, children }) {
   )
 }
 
-function Side({ page, taskList, closeTask, openPopup }) {
-  if (page == 'main' || page == 'settings' || page == 'about') {
+function Side({ page, taskList, closeTask, openPopup, openScreen }) {
+  if (page == 'main' || page == 'note') {
     return (
       <Block className="side-block">
         <Title status="none" format="border-title">Список задач</Title>
@@ -55,12 +56,8 @@ function Side({ page, taskList, closeTask, openPopup }) {
           <TextButton flag="default" openPopup={openPopup}>Добавить задачу</TextButton>
         </Block>
         <Block className="button-block">
-          <TextButton flag="default" func={() => {
-            window.location.href = "/?page=settings"
-          }}>Настройки</TextButton>
-          <TextButton flag="default" func={() => {
-            window.location.href = "/?page=about"
-          }}>О приложении</TextButton>
+          <TextButton openScreen={openScreen} flag="default">Настройки</TextButton>
+          <TextButton openScreen={openScreen} flag="default">О приложении</TextButton>
         </Block>
       </Block> 
     )
@@ -140,12 +137,12 @@ function General({ page }) {
         <Block className="main-write-block">
           {importantWriteList.map((write, index) => {
             return (
-              <Note key={index} noteInfo={write} toImportant={toImportant} toGeneral={toGeneral}/>
+              <Write key={index} noteInfo={write} toImportant={toImportant} toGeneral={toGeneral}/>
             )
           })}
           {generalWriteList.map((write, index) => {
             return (
-              <Note key={index} noteInfo={write} toImportant={toImportant} toGeneral={toGeneral}/>
+              <Write key={index} noteInfo={write} toImportant={toImportant} toGeneral={toGeneral}/>
             )
           })}
         </Block>
@@ -155,7 +152,17 @@ function General({ page }) {
   if (page == 'note') {
     return (
       <Block className="general-block">
-        Блок заметок
+        <Title format="open-title">Заметки</Title>
+        <Block className="note-note-block">
+          <div className="kirp"></div>
+          <div className="kirp"></div>
+          <div className="kirp"></div>
+          <div className="kirp"></div>
+          <div className="kirp"></div>
+        </Block>
+        <Block className="main-add-button-block">
+          <Block className="main-add-button">+</Block>
+        </Block>
       </Block>
     )
   }
@@ -166,7 +173,7 @@ function General({ page }) {
         <Block height="important" className="write-write-block">
           {importantWriteList.map((write, index) => {
             return (
-              <Note key={index} noteInfo={write} toImportant={toImportant} toGeneral={toGeneral}/>
+              <Write key={index} noteInfo={write} toImportant={toImportant} toGeneral={toGeneral}/>
             )
           })}
         </Block>
@@ -174,9 +181,12 @@ function General({ page }) {
         <Block height="other" className="write-write-block">
           {generalWriteList.map((write, index) => {
             return (
-              <Note key={index} noteInfo={write} toImportant={toImportant} toGeneral={toGeneral}/>
+              <Write key={index} noteInfo={write} toImportant={toImportant} toGeneral={toGeneral}/>
             )
           })}
+        </Block>
+        <Block className="main-add-button-block">
+          <Block className="main-add-button">+</Block>
         </Block>
       </Block>
     )
@@ -203,7 +213,16 @@ function App() {
       URLParams[key] = value;
   }
 
-  console.log(URLParams)
+  const [screen, setScreen] = useState({isOpen: false})
+
+  function openScreen(screen) {
+    console.log(screen)
+    setScreen({isOpen: true, ...screen})
+  }
+
+  function closeScreen() {
+    setScreen({isOpen: false})
+  }
 
   const [taskList, setTaskList] = useState([
     {title: "Добавить код", description: "Добавить в MyNotion панель в заметках и конспектах с добавлением фотографии/кода или похожего текста/цитаты В тексте их выделить цветными блоками или как-то так", isDone: false},
@@ -216,7 +235,7 @@ function App() {
   const [info, setInfo] = useState({isOpen: false})
 
   const personDict = {
-    name: "Замолодчиков Алексей",
+    name: "Береговой Лев",
   }
 
   function openInfoPopup(object) {
@@ -257,12 +276,13 @@ function App() {
             </Block>
             <button className="person-account-button" onClick={() => alert("Вы вышли из аккаунта")}>выйти из аккаунта</button>
           </Block>
-          <Side openPopup={openInfoPopup} taskList={taskList} closeTask={closeTask} page={URLParams.page}/>
+          <Side openScreen={openScreen} openPopup={openInfoPopup} taskList={taskList} closeTask={closeTask} page={URLParams.page}/>
         </Block>
         <General page={URLParams.page}>
         </General>
       </Block>
       <Popup info={info} closePopup={closeInfoPopup} removeTask={removeTask} addTask={addTask} />
+      <Screen screen={screen} closeScreen={closeScreen}></Screen>
     </div>
   );
 }

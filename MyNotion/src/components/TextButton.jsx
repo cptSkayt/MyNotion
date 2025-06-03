@@ -1,6 +1,6 @@
 import './TextButton.css';
 
-const TextButton = function ({ flag, children, openPopup, func}) {
+const TextButton = function ({ flag, children, openPopup, func, openScreen }) {
     return (
         <div className={"text-button-block" + " " + flag + "-block"}>
             <div className={"content-main" + " " + "content-" + flag}>
@@ -15,6 +15,9 @@ const TextButton = function ({ flag, children, openPopup, func}) {
                             } else {
                                 func();
                             }
+                        }
+                        if (openScreen !== undefined) {
+                            openScreen({isOpen: true, title: children});
                         }
                     }
                 }>

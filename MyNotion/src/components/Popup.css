@@ -129,13 +129,13 @@ input {
 
     font-family: var(--task-font);
     font-weight: 300;
+    transition: all 0.2s;
 
     &:focus {
-        /* transform: translate(0, -2px); */
+        transform: translate(0, -2px);
         /* background-color: rgb(240, 240, 240); */
         box-shadow: 5px 5px 10px var(--shadow-light-color);
         outline: none;
-        transition: all 0.2s;
     }
 }
 
@@ -152,12 +152,12 @@ textarea {
     resize: none;
 
     font-family: var(--description-font);
+    transition: all 0.2s;
 
     &:focus {
-        /* transform: translate(0, -2px); */
+        transform: translate(0, -2px);
         box-shadow: 5px 5px 12px var(--shadow-light-color);
         outline: none;
-        transition: all 0.2s;
     }
 
     &::-webkit-scrollbar {
