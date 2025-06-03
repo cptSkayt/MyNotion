@@ -2,7 +2,11 @@ import './Write.css';
 
 function Write({ noteInfo, toImportant, toGeneral, openScreen }) {
     return (
-        <div className="write" onClick={() => openScreen({title: noteInfo.name, status: "write"})}>
+        <div className="write" onClick={(event) => {
+            if (event.target.className !== "imp-button" && event.target.className !== "imp-button active") {
+                openScreen({title: noteInfo.name, status: "write"})
+            }
+        }}>
             <div className="main">
                 <div className="write-title">{noteInfo.name}</div>
             </div>

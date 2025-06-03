@@ -73,8 +73,13 @@
 }
 
 .screen-content {
-    top: 100px;
-    left: 0;
-    width: 100%;
+    margin-top: 20px;
+    margin-left: 5%;
+    width: 90%;
     height: calc(100% - 100px);
+
+    font-family: var(--description-font);
+    font-size: 20px;
+
+    white-space: pre;
 }
