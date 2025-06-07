@@ -4,6 +4,7 @@ import Title from './components/Title';
 import TextButton from './components/TextButton';
 import Task from './components/Task';
 import Write from './components/Write';
+import Note from './components/Note';
 import Popup from './components/Popup';
 import Screen from './components/Screen';
 
@@ -97,6 +98,41 @@ function General({ page, openScreen }) {
     {status: "general", name: "Конспекты по физике"},
   ])
 
+  const [noteList, setNoteList] = useState([
+    {title: "Номера телефонов", content: "Андрей: 7-905-615-08-61\nМаша: 7-905-615-08-61"},
+    {title: undefined, content: "Какой-то рандомный текст"},
+  ])
+
+  function addNote(note) {
+    if (note.title === '') {
+      note.title = undefined;
+    }
+    
+    noteList.forEach((item, index) => {
+      if (item.status == 'new') {
+        noteList.splice(index, 1);
+      }
+    })
+    setNoteList([{title: note.title, content: note.content}, ...noteList]);
+  }
+
+  function createNote() {
+    setNoteList([{status: 'new'}, ...noteList]);
+  }
+
+  function deleteNewNote() {
+    noteList.forEach((item, index) => {
+      if (item.status == 'new') {
+        noteList.splice(index, 1);
+      }
+    })
+    setNoteList([...noteList]);
+  }
+
+  function deleteNote(note) {
+    return
+  }
+
   function toImportant(write) {
     for (let i = 0; i < generalWriteList.length; i++) {
       if (generalWriteList[i].name == write.name) {
@@ -122,15 +158,14 @@ function General({ page, openScreen }) {
   if (page == 'main') {
     return (
       <Block className="general-block">
-        <Title status="button" format="open-title" openScreen={openScreen}>Заметки</Title>
+        <Title status="button" format="open-title" openScreen={openScreen} createNote={createNote}>Заметки</Title>
         <Block className="main-note-block">
           <Block className="main-notes">
-            <div className="kirp"></div>
-            <div className="kirp"></div>
-            <div className="kirp"></div>
-            <div className="kirp"></div>
-            <div className="kirp"></div>
-            <div className="kirp"></div>
+            {noteList.map((note, index) => {
+              return (
+                <Note key={index} title={note.title} content={note.content} status={note.status} addNote={addNote} deleteNewNote={deleteNewNote} deleteNote={deleteNote}></Note>
+              )
+            })}
           </Block>
         </Block>
         <Title status="button" format="open-title" openScreen={openScreen}>Записи</Title>
@@ -154,14 +189,14 @@ function General({ page, openScreen }) {
       <Block className="general-block">
         <Title format="open-title">Заметки</Title>
         <Block className="note-note-block">
-          <div className="kirp"></div>
-          <div className="kirp"></div>
-          <div className="kirp"></div>
-          <div className="kirp"></div>
-          <div className="kirp"></div>
+          {noteList.map((note, index) => {
+              return (
+                <Note key={index} title={note.title} content={note.content} status={note.status} addNote={addNote} deleteNewNote={deleteNewNote} deleteNote={deleteNote}></Note>
+              )
+            })}
         </Block>
         <Block className="main-add-button-block">
-          <Block className="main-add-button" onClick={() => openScreen({title: "Создание новой заметки"})}>+</Block>
+          <Block className="main-add-button" onClick={() => createNote()}>+</Block>
         </Block>
       </Block>
     )

@@ -304,17 +304,6 @@
     }
 }
 
-/* ! УДАЛИТЬ */
-.kirp {
-    width: 280px;
-    height: 300px;
-
-    border-radius: 10px;
-
-    background-color: rgb(255, 225, 120);
-    margin: 10px;
-}
-
 [height="important"] {
     max-height: calc(40% - 30px);
 }

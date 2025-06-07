@@ -117,7 +117,7 @@
     color: rgb(40, 40, 40);
 }
 
-input {
+#create-input {
     position: static;
     width: 80%;
     /* margin-left: 5%; */
@@ -139,7 +139,7 @@ input {
     }
 }
 
-textarea {
+#create-textarea {
     position: static;
     width: 80%;
     /* margin-left: 4%; */
