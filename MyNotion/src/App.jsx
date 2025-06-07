@@ -107,7 +107,7 @@ function General({ page, openScreen }) {
     if (note.title === '') {
       note.title = undefined;
     }
-    
+
     noteList.forEach((item, index) => {
       if (item.status == 'new') {
         noteList.splice(index, 1);
@@ -130,7 +130,12 @@ function General({ page, openScreen }) {
   }
 
   function deleteNote(note) {
-    return
+    noteList.forEach((item, index) => {
+      if (item.title == note.title || item.content == note.content) {
+        noteList.splice(index, 1);
+      }
+    })
+    setNoteList([...noteList]);
   }
 
   function toImportant(write) {

@@ -30,7 +30,7 @@ const Note = ({ status, title, content, addNote, deleteNewNote, deleteNote }) =>
                     <div className="note-title">{title}</div>
                     <div className="note-button-block">
                         <div id="note-change-button" className="note-button"></div>
-                        <div id="note-delete-button" className="note-button"></div>
+                        <div id="note-delete-button" className="note-button" onClick={() => deleteNote({title: title, content: content})}></div>
                     </div>
                 </div>
                 <pre className="note-content">
